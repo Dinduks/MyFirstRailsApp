@@ -12,17 +12,16 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    
+
     <div class="topbar">
       <div class="fill">
         <div class="container">
           <a class="brand" href="#">TP RoR</a>
-          
-          <% if user_signed_in? %>
-            <ul class="nav">
-              <%= render :partial => '/partials/navbar.html.erb' %>
-            </ul>
-          <% else %>
+
+          <ul class="nav">
+            <%= render :partial => '/partials/navbar.html.erb' %>
+          </ul>
+          <% if !user_signed_in? %>
             <%= render :partial => 'partials/forms/login_form' %>
           <% end %>
         </div>
@@ -54,6 +53,6 @@
       </footer>
 
     </div>
-    
+
   </body>
 </html>

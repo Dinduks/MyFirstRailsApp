@@ -18,22 +18,30 @@ end
     <%= I18n.t :home %>
   <% end %>
 </li>
+
+<% if user_signed_in? && current_user.admin %>
 <li>
   <%= link_to new_article_path do %>
     <%= I18n.t :ajouter_article %>
   <% end %>
 </li>
+<% end %>
+
 <li>
   <%= link_to articles_path do %>
     <%= I18n.t :afficher_articles %>
   <% end %>
 </li>
+
+<% if user_signed_in? %>
 <li>
   <%= link_to panier_index_path do %>
     <%=  I18n.t :Panier %>
     <%= "(#{panier_counter})" %> 
   <% end %>
 </li>
+<% end %>
+
 <li>
   <% if user_signed_in? %>
     <%= link_to destroy_user_session_path, :method => :delete do %>
