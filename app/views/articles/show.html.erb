@@ -1,0 +1,22 @@
+<% @page_small_title = I18n.t :description_produit %>
+
+<img src="/uploads/articlesimages/<%= @article.image %>" 
+     alt="<%= @article.titre %>" 
+     style="float:right;" />
+
+<h2><%= @article.titre %></h2>
+<p><%= @article.description %></p>
+
+<p class="recommand">
+  <a href="#" class="btn primary" 
+     data-controls-modal="recommand-modal"
+     data-backdrop="true"
+     data-keyboard="true">
+       <%= I18n.t :recommander_ami %>
+  </a>
+</p>
+
+<%= 
+render :partial => 'partials/modals/recommand_modal',
+       :locals  => { :article => @article, :recommendation => @recommendation}
+%>

@@ -1,0 +1,42 @@
+<table>
+  
+<% if @articles.empty? %>
+  <tr>
+    <td>Il n'y a aucun article enregistré</td>
+  </tr>
+<% else %>
+  
+  <% @articles.each do |article| %>
+  <tr>
+    <td>
+      <a href="<%= article_path article.id %>">
+        <img src="/uploads/articlesimages/<%= article.image %>" 
+             alt="<%= article.titre %>" />
+      </a>
+    </td>
+    <td>
+      <%= article.titre %>
+    </td>
+    <td>
+      <%= link_to article_commander_path article.id do %>
+        <%= I18n.t :commander %>
+      <% end %>
+    </td>
+    <% if current_user.admin %>
+    <td>
+      <%= link_to edit_article_path article.id do %>
+        <%= I18n.t :editer %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to article_path(article.id), :method => :delete do %>
+        <%= I18n.t :supprimer %>
+      <% end %>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+  
+<% end %>
+  
+</table>

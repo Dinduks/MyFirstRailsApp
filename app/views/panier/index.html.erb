@@ -1,0 +1,18 @@
+<table>
+  <% @articles.each do |article| %>
+    <tr>
+      <td>
+        <img src="/uploads/articlesimages/<%= article.image %>" 
+             alt="<%= article.titre %>" />
+      </td>
+      <td>
+        <%= article.titre %>
+      </td>
+      <td>
+        <%= link_to panier_path(article.id), :method => :delete do %>
+          <%= I18n.t :supprimer %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

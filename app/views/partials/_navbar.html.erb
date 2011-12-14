@@ -1,0 +1,45 @@
+<%
+if !session[:panier].nil? && !session[:panier].empty?
+  panier_counter = session[:panier].count.to_s
+  if session[:panier].count == 1
+    panier_counter += " "
+    panier_counter += I18n.t :produit
+  else
+    panier_counter += " "
+    panier_counter += I18n.t :produits
+  end
+else
+  panier_counter = I18n.t :vide
+end
+%>
+
+<li>
+  <%= link_to root_path do %>
+    <%= I18n.t :home %>
+  <% end %>
+</li>
+<li>
+  <%= link_to new_article_path do %>
+    <%= I18n.t :ajouter_article %>
+  <% end %>
+</li>
+<li>
+  <%= link_to articles_path do %>
+    <%= I18n.t :afficher_articles %>
+  <% end %>
+</li>
+<li>
+  <%= link_to panier_index_path do %>
+    <%=  I18n.t :Panier %>
+    <%= "(#{panier_counter})" %> 
+  <% end %>
+</li>
+<li>
+  <% if user_signed_in? %>
+    <%= link_to destroy_user_session_path, :method => :delete do %>
+      <%= I18n.t :se_deconnecter %>
+    <% end %>
+  <% else %>
+    <%= link_to I18n.t :se_connecter, new_user_session_path %>
+  <% end %>
+</li>
