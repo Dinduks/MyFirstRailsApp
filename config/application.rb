@@ -16,10 +16,10 @@ module Ecommerce
     
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address   => "mail.naravia.com",
+      :address   => "",
       :port      => 25,
-      :user_name => "staff@naravia.com",
-      :password  => "cats"
+      :user_name => "",
+      :password  => ""
     }
   end
 end

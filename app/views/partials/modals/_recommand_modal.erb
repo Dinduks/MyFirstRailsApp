@@ -1,8 +1,10 @@
 <% recommand = I18n.t :Recommander %>
 
-<%= form_for @recommendation, :url => article_recommander_path(@article.id), :remote => true do |f| %>
+<div id="recommand-modal" class="modal fade">
 
-  <div id="recommand-modal" class="modal">
+
+  <%= form_for @recommendation, :url => article_recommander_path(@article.id), :remote => true do |f| %>
+
     <div class="modal-body">
       <p><%= I18n.t :saisir_adresse_ami %></p>
       <div>
@@ -24,6 +26,21 @@
            <%= I18n.t :Annuler %>
       </a>
     </div>
-  </div>
 
-<% end %>
+  <% end %>
+</div>
+
+<div class="recommendation-alert" style="display:none;">
+  <%=
+  render :partial => 'partials/alert',
+         :locals  => {:flash => {:success => I18n.t(:recommendation_envoyee)}}
+  %>
+</div>
+
+<script type="text/javascript">
+  $('#new_recommendation').submit(function() {
+    $('#recommand-modal').modal('hide');
+    $('.span14').prepend($('.recommendation-alert'));
+    $('.recommendation-alert').show();
+  });
+</script>
