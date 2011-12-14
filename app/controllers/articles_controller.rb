@@ -1,6 +1,8 @@
 #encoding: utf-8
 class ArticlesController < ApplicationController
   before_filter :get_article, :set_title
+  before_filter :require_admin!,
+    :only => [:destroy, :new, :create, :edit, :update]
   respond_to    :html
 
   def index
@@ -10,17 +12,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if !current_user.admin
-      raise Errors::AccessDenied
-    end
     @article.destroy
     respond_with @article
   end
 
   def new
-    if !current_user.admin
-      raise Errors::AccessDenied
-    end
     @page_small_title = I18n.t :ajouter_article
     @article = Article.new
     respond_with @article
@@ -33,9 +29,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if !current_user.admin
-      raise Errors::AccessDenied
-    end
     respond_with @article
   end
 

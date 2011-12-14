@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def access_denied
     render 'errors/access_denied'
   end
+
+  def require_admin!
+    raise Errors::AccessDenied unless current_user.admin?
+  end
 end
