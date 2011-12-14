@@ -1,5 +1,6 @@
 Exemple d'une application Ruby on Rails
 =======================================
+[![Travis](https://secure.travis-ci.org/Dinduks/MyFirstRailsApp.png)](http://travis-ci.org/Dinduks/MyFirstRailsApp)
 
 How to
 ------
