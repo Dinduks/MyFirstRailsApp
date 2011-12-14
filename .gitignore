@@ -3,4 +3,5 @@
 /log/*.log
 /tmp
 nbproject/
+test/
 todo.txt
