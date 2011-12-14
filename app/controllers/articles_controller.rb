@@ -51,17 +51,11 @@ class ArticlesController < ApplicationController
 
   def recommander
     @article = Article.find params[:article_id]
+    recommandation = Recommendation.create params[:recommendation].merge(:user_id => current_user.id)
 
-    name = params[:recommendation][:name]
-    email = params[:recommendation][:email]
-
-    recommendation = Recommendation.new
-    recommendation.name = name
-    recommendation.email = email
-    recommendation.user_id = current_user.id
-    recommendation.save
-
-    Mailer::recommendation_email(name, email, @article).deliver
+    if recommandation
+      Mailer::recommendation_email(@article, recommandation).deliver
+    end
 
     render :nothing => true
   end
