@@ -1,7 +1,7 @@
 Ecommerce::Application.routes.draw do
   scope ":locale" do
     devise_for :users
-    resources  :panier
+    resources  :cart
     resources  :products do
       match "/commander"   => "products#commander",    :as => "commander"
       match "/recommander" => "products#recommander",  :as => "recommander"

@@ -9,7 +9,7 @@
         <%= product.title %>
       </td>
       <td>
-        <%= link_to panier_path(product.id), :method => :delete do %>
+        <%= link_to cart_path(product.id), :method => :delete do %>
           <%= I18n.t :supprimer %>
         <% end %>
       </td>

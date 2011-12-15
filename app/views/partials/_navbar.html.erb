@@ -20,7 +20,7 @@
 
 <% if user_signed_in? %>
 <li>
-  <%= link_to panier_index_path do %>
+  <%= link_to cart_index_path do %>
     <%=  I18n.t :Panier %>
     <%= "(#{get_cart_status})" %> 
   <% end %>

@@ -1,18 +1,18 @@
 #encoding: utf-8
-class PanierController < ApplicationController
+class CartController < ApplicationController
   before_filter :get_product, :set_title
   respond_to :html
 
   def index
-    if !session.has_key?(:panier) || session[:panier].empty?
-      return render 'empty_panier'
+    if !session.has_key?(:cart) || session[:cart].empty?
+      return render 'empty_cart'
     end
-    @products = Product.find session[:panier]
+    @products = Product.find session[:cart]
     respond_with @products
   end
 
   def destroy
-    session[:panier].delete(params[:id].to_i)
+    session[:cart].delete(params[:id].to_i)
     flash[:success] = I18n.t :article_retire_du_panier
     flash[:success] += '!'
     redirect_to :action => "index"

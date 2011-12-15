@@ -13,8 +13,8 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    if !session[:panier].nil? && !session[:panier].empty?
-      session[:panier].delete(@product.id)
+    if !session[:cart].nil? && !session[:cart].empty?
+      session[:cart].delete(@product.id)
     end
     respond_with @product
   end
@@ -41,8 +41,8 @@ class ProductsController < ApplicationController
   end
 
   def commander
-    session[:panier] ||= []
-    session[:panier] << @product.id
+    session[:cart] ||= []
+    session[:cart] << @product.id
     flash[:success] = @product.title + " a été ajouté au panier!"
     redirect_to :action => "index"
   end

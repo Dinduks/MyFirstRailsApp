@@ -49,8 +49,8 @@ describe ProductsController do
       lambda do
         get :commander, :locale => 'en', :product_id => 42
       end.should do
-        session.have_key(:panier)
-        session[:panier].have_key(product.id)
+        session.have_key(:cart)
+        session[:cart].have_key(product.id)
       end
     end
     
@@ -81,21 +81,21 @@ describe ProductsController do
     end
     it "should remove the product from the cart" do
       product = Factory(:product)
-      session[:panier] = [product.id, 1, 10, product.id, product.id, 5, product.id]
+      session[:cart] = [product.id, 1, 10, product.id, product.id, 5, product.id]
       delete :destroy, :locale => 'en', :id => 42
-      session[:panier].should eql([1, 10, 5])
+      session[:cart].should eql([1, 10, 5])
     end
     it "should do nothing if the cart's empty" do
       product = Factory(:product)
-      session[:panier] = []
+      session[:cart] = []
       delete :destroy, :locale => 'en', :id => 42
-      session[:panier].should eql([])
+      session[:cart].should eql([])
     end
     it "should do nothing if the cart's nil" do
       product = Factory(:product)
-      session[:panier] = nil
+      session[:cart] = nil
       delete :destroy, :locale => 'en', :id => 42
-      session[:panier].should eql(nil)
+      session[:cart].should eql(nil)
     end
   end
   
