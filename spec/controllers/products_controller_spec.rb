@@ -66,12 +66,36 @@ describe ProductsController do
     end
     
     it "should redirect to the index" do
-        product = Factory(:product)
+      product = Factory(:product)
+      get :commander, :locale => 'en', :product_id => 42
+      response.should redirect_to(:action => "index")
+    end
+  end
+  
+  describe "DELETE destroy" do
+    it "should remove the product from the db" do
+      product = Factory(:product)
       lambda do
-        get :commander, :locale => 'en', :product_id => 42
-      end.should do
-        response.should redirect_to(:action => "index")
-      end
+        delete :destroy, :locale => 'en', :id => 42
+      end.should change(Product, :count).by(-1)
+    end
+    it "should remove the product from the cart" do
+      product = Factory(:product)
+      session[:panier] = [product.id, 1, 10, product.id, product.id, 5, product.id]
+      delete :destroy, :locale => 'en', :id => 42
+      session[:panier].should eql([1, 10, 5])
+    end
+    it "should do nothing if the cart's empty" do
+      product = Factory(:product)
+      session[:panier] = []
+      delete :destroy, :locale => 'en', :id => 42
+      session[:panier].should eql([])
+    end
+    it "should do nothing if the cart's nil" do
+      product = Factory(:product)
+      session[:panier] = nil
+      delete :destroy, :locale => 'en', :id => 42
+      session[:panier].should eql(nil)
     end
   end
   
