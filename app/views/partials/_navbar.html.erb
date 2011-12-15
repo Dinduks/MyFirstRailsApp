@@ -1,18 +1,3 @@
-<%
-if !session[:panier].nil? && !session[:panier].empty?
-  panier_counter = session[:panier].count.to_s
-  if session[:panier].count == 1
-    panier_counter += " "
-    panier_counter += I18n.t :produit
-  else
-    panier_counter += " "
-    panier_counter += I18n.t :produits
-  end
-else
-  panier_counter = I18n.t :vide
-end
-%>
-
 <li>
   <%= link_to root_path do %>
     <%= I18n.t :home %>
@@ -37,7 +22,7 @@ end
 <li>
   <%= link_to panier_index_path do %>
     <%=  I18n.t :Panier %>
-    <%= "(#{panier_counter})" %> 
+    <%= "(#{get_cart_status})" %> 
   <% end %>
 </li>
 <% end %>
