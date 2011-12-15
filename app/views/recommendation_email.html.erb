@@ -7,8 +7,8 @@
     <%=
     I18n.t :recommendation_email_body, 
            :name => @name,
-           :article_url => article_path(@article),
-           :article_name => @article.titre
+           :product_url => title_path(@product),
+           :product_name => @product.title
     %>
   </body>
 </html>

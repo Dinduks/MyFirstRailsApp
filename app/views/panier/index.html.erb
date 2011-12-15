@@ -1,15 +1,15 @@
 <table>
-  <% @articles.each do |article| %>
+  <% @products.each do |product| %>
     <tr>
       <td>
-        <img src="/uploads/articlesimages/<%= article.image %>" 
-             alt="<%= article.titre %>" />
+        <img src="/uploads/articlesimages/<%= product.image %>" 
+             alt="<%= product.title %>" />
       </td>
       <td>
-        <%= article.titre %>
+        <%= product.title %>
       </td>
       <td>
-        <%= link_to panier_path(article.id), :method => :delete do %>
+        <%= link_to panier_path(product.id), :method => :delete do %>
           <%= I18n.t :supprimer %>
         <% end %>
       </td>

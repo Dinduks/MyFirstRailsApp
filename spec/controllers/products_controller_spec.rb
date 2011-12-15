@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ArticlesController do
+describe ProductsController do
   include Devise::TestHelpers
   
   before :each do
@@ -17,58 +17,58 @@ describe ArticlesController do
   
   describe "POST recommander" do
     it "should create a recommandation" do
-      article = Factory(:article)
+      product = Factory(:product)
       name = 'moi'
       email = 'moi@moi.com'
       
       lambda do
-        post :recommander, :article_id => article.id, :locale => 'en',
+        post :recommander, :product_id => product.id, :locale => 'en',
           :recommendation => {:name => name, :email => email}
       end.should change(Recommendation, :count).by(1)
     end
     
     it "should send an email" do
-      article = Factory(:article)
+      product = Factory(:product)
       name = 'moi'
       email = 'moi@moi.com'
       
       lambda do
-        post :recommander, :article_id => article.id, :locale => 'en',
+        post :recommander, :product_id => product.id, :locale => 'en',
           :recommendation => {:name => name, :email => email}
       end.should change(ActionMailer::Base.deliveries, :length).by(1) 
       
       emailSent = ActionMailer::Base.deliveries.last
       emailSent.to.should eql(['moi@moi.com'])
       emailSent.encoded.should match(/#{name}/)
-      emailSent.encoded.should match(/#{article.titre}/)
+      emailSent.encoded.should match(/#{product.title}/)
     end
   end
   
   describe "GET commander" do
     it "should add the product id to the session" do
       lambda do
-        get :commander, :locale => 'en', :article_id => 42
+        get :commander, :locale => 'en', :product_id => 42
       end.should do
         session.have_key(:panier)
-        session[:panier].have_key(article.id)
+        session[:panier].have_key(product.id)
       end
     end
     
     it "should display a flash message" do
-      article = Factory(:article)
+      product = Factory(:product)
       lambda do
-        get :commander, :locale => 'en', :article_id => 42
+        get :commander, :locale => 'en', :product_id => 42
       end.should do
         flash.have_key[:success]
         flash[:success].should_not be empty
-        flash[:success].should match(/#{article.titre}/)
+        flash[:success].should match(/#{product.title}/)
       end
     end
     
     it "should redirect to the index" do
-        article = Factory(:article)
+        product = Factory(:product)
       lambda do
-        get :commander, :locale => 'en', :article_id => 42
+        get :commander, :locale => 'en', :product_id => 42
       end.should do
         response.should redirect_to(:action => "index")
       end

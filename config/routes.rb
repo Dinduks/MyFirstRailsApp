@@ -2,9 +2,9 @@ Ecommerce::Application.routes.draw do
   scope ":locale" do
     devise_for :users
     resources  :panier
-    resources  :articles do
-      match "/commander"   => "articles#commander",    :as => "commander"
-      match "/recommander" => "articles#recommander",  :as => "recommander"
+    resources  :products do
+      match "/commander"   => "products#commander",    :as => "commander"
+      match "/recommander" => "products#recommander",  :as => "recommander"
     end
     match "/forbidden"     => "application#forbidden", :as => "forbidden"
     match "/:locale/"      => "index#index", :as => "index"

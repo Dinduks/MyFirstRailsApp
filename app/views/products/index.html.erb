@@ -1,36 +1,36 @@
 <table>
 
-  <% if @articles.empty? %>
+  <% if @products.empty? %>
     <tr>
-      <td>Il n'y a aucun article enregistré</td>
+      <td>Il n'y a aucun produit enregistré</td>
     </tr>
   <% else %>
 
-    <% @articles.each do |article| %>
+    <% @products.each do |product| %>
       <tr>
         <td>
-          <a href="<%= article_path article.id %>">
-            <img src="/uploads/articlesimages/<%= article.image %>" 
-                 alt="<%= article.titre %>" />
+          <a href="<%= product_path product.id %>">
+            <img src="/uploads/articlesimages/<%= product.image %>" 
+                 alt="<%= product.title %>" />
           </a>
         </td>
         <td>
-          <%= article.titre %>
+          <%= product.title %>
         </td>
         <% if user_signed_in? %>
           <td>
-            <%= link_to article_commander_path article.id do %>
+            <%= link_to product_commander_path product.id do %>
               <%= I18n.t :commander %>
             <% end %>
           </td>
           <% if current_user.admin %>
             <td>
-              <%= link_to edit_article_path article.id do %>
+              <%= link_to edit_product_path product.id do %>
                 <%= I18n.t :editer %>
               <% end %>
             </td>
             <td>
-              <%= link_to article_path(article.id), :method => :delete do %>
+              <%= link_to product_path(product.id), :method => :delete do %>
                 <%= I18n.t :supprimer %>
               <% end %>
             </td>

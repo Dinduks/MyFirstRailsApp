@@ -3,12 +3,12 @@
 <div id="recommand-modal" class="modal fade">
 
 
-  <%= form_for @recommendation, :url => article_recommander_path(@article.id), :remote => true do |f| %>
+  <%= form_for @recommendation, :url => product_recommander_path(@product.id), :remote => true do |f| %>
 
     <div class="modal-body">
       <p><%= I18n.t :saisir_adresse_ami %></p>
       <div>
-        <%= hidden_field_tag :article_id, @article.id %>
+        <%= hidden_field_tag :product_id, @product.id %>
       </div>
       <p>
         <%= f.label :name, "Your name" %>

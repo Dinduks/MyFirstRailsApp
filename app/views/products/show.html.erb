@@ -1,11 +1,11 @@
 <% @page_small_title = I18n.t :description_produit %>
 
-<img src="/uploads/articlesimages/<%= @article.image %>" 
-     alt="<%= @article.titre %>" 
+<img src="/uploads/articlesimages/<%= @product.image %>" 
+     alt="<%= @product.title %>" 
      style="float:right;" />
 
-<h2><%= @article.titre %></h2>
-<p><%= @article.description %></p>
+<h2><%= @product.title %></h2>
+<p><%= @product.description %></p>
 
 <p class="recommand">
   <a href="#" class="btn primary" 
@@ -18,5 +18,5 @@
 
 <%= 
 render :partial => 'partials/modals/recommand_modal',
-       :locals  => { :article => @article, :recommendation => @recommendation}
+       :locals  => { :product => @product, :recommendation => @recommendation}
 %>

@@ -1,10 +1,10 @@
 class Mailer < ActionMailer::Base
   default :from => "samy@dindane.com"
 
-  def recommendation_email(article, recommandation)
+  def recommendation_email(product, recommandation)
     @name = recommandation.name
     subject = I18n.t :recommendation_email_subject,
-                     :article_name => article.titre,
+                     :product_name => product.title,
                      :name         => @name
     mail(
       :to      => recommandation.email,

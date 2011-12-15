@@ -18,18 +18,18 @@ User.create([
     },
  ])
 
-Article.create([
+Product.create([
     {
-      titre:       'KORG X50',
+      title:       'KORG X50',
       image:       '8714701_1.jpg',
     },
     {
-      titre:       'An arrow to the knee ',
+      title:       'An arrow to the knee ',
       image:       'arrow.JPG',
       description: 'If you used to be an adventurer like me...'
     },
     {
-      titre:       'SSD',
+      title:       'SSD',
       image:       'ssd-test-jeu-video.jpg',
     },
 ])

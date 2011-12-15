@@ -21,14 +21,14 @@ end
 
 <% if user_signed_in? && current_user.admin %>
 <li>
-  <%= link_to new_article_path do %>
+  <%= link_to new_product_path do %>
     <%= I18n.t :ajouter_article %>
   <% end %>
 </li>
 <% end %>
 
 <li>
-  <%= link_to articles_path do %>
+  <%= link_to products_path do %>
     <%= I18n.t :afficher_articles %>
   <% end %>
 </li>

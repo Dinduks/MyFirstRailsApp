@@ -1,14 +1,14 @@
 #encoding: utf-8
 class PanierController < ApplicationController
-  before_filter :get_article, :set_title
+  before_filter :get_product, :set_title
   respond_to :html
 
   def index
     if !session.has_key?(:panier) || session[:panier].empty?
       return render 'empty_panier'
     end
-    @articles = Article.find session[:panier]
-    respond_with @articles
+    @products = Product.find session[:panier]
+    respond_with @products
   end
 
   def destroy
@@ -19,10 +19,10 @@ class PanierController < ApplicationController
   end
 
   private
-  def get_article
+  def get_product
     id = params[:id]
     if id
-      @article = Article.find id
+      @product = Product.find id
     end
   end
 

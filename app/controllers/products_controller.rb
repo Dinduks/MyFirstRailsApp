@@ -1,70 +1,70 @@
 #encoding: utf-8
-class ArticlesController < ApplicationController
-  before_filter :get_article, :set_title
+class ProductsController < ApplicationController
+  before_filter :get_product, :set_title
   before_filter :require_admin!,
     :only => [:destroy, :new, :create, :edit, :update]
   respond_to    :html
 
   def index
     @page_small_title = I18n.t :liste_articles
-    @articles = Article.all
-    respond_with @articles
+    @products = Product.all
+    respond_with @products
   end
 
   def destroy
-    @article.destroy
-    respond_with @article
+    @product.destroy
+    respond_with @product
   end
 
   def new
     @page_small_title = I18n.t :ajouter_article
-    @article = Article.new
-    respond_with @article
+    @product = Product.new
+    respond_with @product
   end
 
   def create
-    @article = Article.new params[:article]
-    @article.save
+    @product = Product.new params[:product]
+    @product.save
     redirect_to :action => "index"
   end
 
   def edit
-    respond_with @article
+    respond_with @product
   end
 
   def update
-    @article.update_attributes params[:article]
-    respond_with @article
+    @product.update_attributes params[:product]
+    respond_with @product
   end
 
   def commander
     session[:panier] ||= []
-    session[:panier] << @article.id
-    flash[:success] = @article.titre + " a été ajouté au panier!"
+    session[:panier] << @product.id
+    flash[:success] = @product.title + " a été ajouté au panier!"
     redirect_to :action => "index"
   end
 
   def show
     @recommendation = Recommendation.new
-    respond_with @article
+    respond_with @product
   end
 
   def recommander
-    @article = Article.find params[:article_id]
+    @product = Product.find params[:product_id]
     recommandation = Recommendation.create params[:recommendation].merge(:user_id => current_user.id)
 
     if recommandation
-      Mailer::recommendation_email(@article, recommandation).deliver
+      Mailer::recommendation_email(@product, recommandation).deliver
     end
 
     render :nothing => true
   end
 
   private
-  def get_article
-    id = params[:id] || params[:article_id]
+  def get_product
+    id = params[:id] || params[:product_id]
     if id
-      @article = Article.find id
+      @product = Product.find id
     end
   end
 

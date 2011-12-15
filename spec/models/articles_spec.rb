@@ -1,2 +1,0 @@
-describe Article do
-end

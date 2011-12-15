@@ -30,6 +30,6 @@ fr:
   Annuler: "Annuler"
   Recommander: "Recommander"
   recommander_ami: "Recommander à un ami"
-  recommendation_email_subject: "%{name} te recommande d'acheter %{article_name}"
-  recommendation_email_body: "Bonjour, <br /><br />${name} pense que cet article pourra t'intéresser et te recommande d'y jeter un coup d'oeil! <br /> <a href='${article_url}'>${article}</a> <br /><br /> À bientôt sur <insert random name here>"
+  recommendation_email_subject: "%{name} te recommande d'acheter %{product_name}"
+  recommendation_email_body: "Bonjour, <br /><br />${name} pense que cet article pourra t'intéresser et te recommande d'y jeter un coup d'oeil! <br /> <a href='${product_url}'>${article}</a> <br /><br /> À bientôt sur <insert random name here>"
   recommendation_envoyee: "Votre recommendation a bien été envoyée, merci!"
