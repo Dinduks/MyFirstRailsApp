@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+    if !session[:panier].nil? && !session[:panier].empty?
+      session[:panier].delete(@product.id)
+    end
     respond_with @product
   end
 
