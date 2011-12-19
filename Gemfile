@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
-
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -40,6 +38,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'rails', '3.1.3'
   gem "rspec-rails", "~> 2.6"
 end
 
