@@ -6,6 +6,11 @@
     </tr>
   <% else %>
 
+    <tr>
+      <td><%=t :image %> </td>
+      <td><%=t :titre %> </td>
+      <td><%=t :Price %> </td>
+    </tr>
     <% @products.each do |product| %>
       <tr>
         <td>

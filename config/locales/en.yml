@@ -36,3 +36,5 @@ en:
   recommendation_email_subject: "%{name} recommands you to buy %{product_name}"
   recommendation_email_body: "Hello, <br /><br />${name} believes that this product may interest you and suggests you to check it<br /> <a href='${article_url}'>${product_name}</a><br /><br /> See you later on <insert random name here>"
   recommendation_envoyee: "Your recommendation has been sent, thanks!"
+  Quantity: "Quantity"
+  Price: "Price"

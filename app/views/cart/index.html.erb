@@ -1,6 +1,15 @@
 <table>
+  <tr>
+    <td><%=t :Quantity %></td>
+    <td><%=t :image %></td>
+    <td><%=t :titre %></td>
+    <td><%=t :Price %></td>
+  </tr>
   <% @products.each do |product| %>
     <tr>
+      <td>
+        
+      </td>
       <td>
         <img src="/uploads/articlesimages/<%= product.image %>" 
              alt="<%= product.title %>" />
