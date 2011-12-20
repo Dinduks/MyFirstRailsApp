@@ -9,6 +9,8 @@
         <%= product.title %>
       </td>
       <td>
+        <%= product.price %> €
+      <td>
         <%= link_to cart_path(product.id), :method => :delete do %>
           <%= I18n.t :supprimer %>
         <% end %>

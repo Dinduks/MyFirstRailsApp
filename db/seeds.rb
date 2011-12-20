@@ -22,14 +22,17 @@ Product.create([
     {
       title:       'KORG X50',
       image:       '8714701_1.jpg',
+      price:       600
     },
     {
       title:       'An arrow to the knee ',
       image:       'arrow.JPG',
+      price:       9000,
       description: 'If you used to be an adventurer like me...'
     },
     {
       title:       'SSD',
+      price:       150,
       image:       'ssd-test-jeu-video.jpg',
     },
 ])

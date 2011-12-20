@@ -17,6 +17,9 @@
         <td>
           <%= product.title %>
         </td>
+        <td>
+          <%= product.price %> €
+        </td>
         <% if user_signed_in? %>
           <td>
             <%= link_to product_commander_path product.id do %>
