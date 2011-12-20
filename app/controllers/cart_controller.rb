@@ -13,9 +13,9 @@ class CartController < ApplicationController
 
   def destroy
     id = params[:id].to_i
-    times_to_add = session[:cart].count(id) - 1
+      add_again = session[:cart].count(id) - 1
     session[:cart].delete(id)
-    times_to_add.times do
+    add_again.times do
       session[:cart] << id
     end
     flash[:success] = I18n.t :article_retire_du_panier
