@@ -10,7 +10,7 @@ User.create([
     {
       email:       'samy@dindane.com', 
       password:    'samysawesome',
-      admin:       true
+      admin:       1
     },
     {
       email:       'hello@world.com', 
