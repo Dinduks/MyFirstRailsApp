@@ -23,7 +23,7 @@
           <%= product.title %>
         </td>
         <td>
-          <%= product.price %> €
+          <%= get_formatted_price product.price %> €
         </td>
         <% if user_signed_in? %>
           <td>
