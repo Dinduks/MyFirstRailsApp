@@ -54,6 +54,13 @@ describe ProductsController do
       end
     end
     
+    it "should increment the product's quantity in the session" do
+      product = Factory(:product)
+      session[:cart] = {product.id => 3}
+      get :commander, :locale => 'en', :product_id => 42
+      session[:cart][product.id].should eql(4)
+    end
+    
     it "should display a flash message" do
       product = Factory(:product)
       lambda do
