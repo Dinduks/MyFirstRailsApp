@@ -7,17 +7,12 @@ class CartController < ApplicationController
     if !session.has_key?(:cart) || session[:cart].empty?
       return render 'empty_cart'
     end
-    @products = Product.find session[:cart]
+    @products = Product.find session[:cart].keys
     respond_with @products
   end
 
   def destroy
-    id = params[:id].to_i
-      add_again = session[:cart].count(id) - 1
-    session[:cart].delete(id)
-    add_again.times do
-      session[:cart] << id
-    end
+    session[:cart] = CartUtility.remove_product(session[:cart], @product.id, 1)
     flash[:success] = I18n.t :article_retire_du_panier
     flash[:success] += '!'
     redirect_to :action => "index"

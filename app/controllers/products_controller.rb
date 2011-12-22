@@ -41,8 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def commander
-    session[:cart] ||= []
-    session[:cart] << @product.id
+    session[:cart] = CartUtility.add_product(session[:cart], @product.id, 1)
     flash[:success] = @product.title + " a été ajouté au panier!"
     redirect_to :action => "index"
   end

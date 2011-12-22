@@ -1,17 +1,26 @@
 module CartHelper
+
   def get_cart_status
-    if !session[:cart].nil? && !session[:cart].empty?
-      cart_counter = session[:cart].count.to_s
-      if session[:cart].count == 1
-        cart_counter += " "
-        cart_counter += I18n.t :produit
-      else
-        cart_counter += " "
-        cart_counter += I18n.t :produits
+    if !session[:cart].empty? && !session[:cart].nil?
+      products_counter = 0
+      session[:cart].each do |product|
+        products_counter += product[1]
       end
+      
+      if products_counter == 1
+        products_counter = products_counter.to_s
+        products_counter += " "
+        products_counter += I18n.t :produit
+      else
+        products_counter = products_counter.to_s
+        products_counter += " "
+        products_counter += I18n.t :produits
+      end
+      
+      return products_counter
     else
-      cart_counter = I18n.t :vide
+      return I18n.t :vide
     end
-    return cart_counter
   end
+
 end

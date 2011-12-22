@@ -8,7 +8,7 @@
   <% @products.each do |product| %>
     <tr>
       <td>
-        <%= session[:cart].count product.id %>
+        <%= session[:cart][product.id] %>
       </td>
       <td>
         <img src="/uploads/articlesimages/<%= product.image %>" 
