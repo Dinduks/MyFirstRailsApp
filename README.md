@@ -1,8 +1,8 @@
-Exemple d'une application Ruby on Rails
-=======================================
+A Ruby on Rails application example
+===================================
 [![Travis](https://secure.travis-ci.org/Dinduks/MyFirstRailsApp.png)](http://travis-ci.org/Dinduks/MyFirstRailsApp)
 
-I have created this application while learning Ruby/RoR with [@dmathieu](https://github.com/dmathieu) as a teacher, and I decided to share it with my classmates and also those who want to get a quick idea of how a real RoR project looks like.
+I have created this application while learning Ruby/RoR with [@dmathieu](https://github.com/dmathieu) as my teacher, and I decided to share it with my classmates and also those who want to get a quick idea of how a real RoR project looks like.
 
 How to
 ------
