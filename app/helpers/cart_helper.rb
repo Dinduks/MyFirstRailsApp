@@ -1,7 +1,7 @@
 module CartHelper
 
   def get_cart_status
-    if !session[:cart].empty? && !session[:cart].nil?
+    if !session[:cart].nil? && !session[:cart].empty?
       products_counter = 0
       session[:cart].each do |product|
         products_counter += product[1]
