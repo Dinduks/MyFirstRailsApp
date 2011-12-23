@@ -16,10 +16,9 @@ module Ecommerce
     
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address   => "",
-      :port      => 25,
-      :user_name => "",
-      :password  => ""
+      :address        => "smtp.menara.ma",
+      :port           => 25,
+      :authentication => "plain",
     }
   end
 end
