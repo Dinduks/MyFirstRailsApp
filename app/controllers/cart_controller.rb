@@ -13,8 +13,7 @@ class CartController < ApplicationController
 
   def destroy
     session[:cart] = CartUtility.remove_product(session[:cart], @product.id, 1)
-    flash[:success] = I18n.t :article_retire_du_panier
-    flash[:success] += '!'
+    flash[:success] = I18n.t :article_retire_du_panier!
     redirect_to :action => "index"
   end
 

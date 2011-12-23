@@ -20,7 +20,7 @@ fr:
   bienvenue: "Bienvenue"
   mettre_a_jour_article: "Mettre à jour l'article"
   pas_le_droit_acces: "Vous n'avez pas le droit d'accèder à cette page"
-  article_retire_du_panier: "Article retiré du panier"
+  article_retire_du_panier!: "Article retiré du panier!"
   article: "article"
   articles: "articles"
   Article: "Article"
@@ -35,3 +35,4 @@ fr:
   recommendation_envoyee: "Votre recommendation a bien été envoyée, merci!"
   Quantity: "Quantité"
   Price: "Prix"
+  has_been_added_to_cart!: "%{name} a été ajouté au panier!"
