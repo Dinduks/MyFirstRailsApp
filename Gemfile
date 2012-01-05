@@ -40,3 +40,5 @@ end
 
 gem 'devise', '1.5.2'
 gem 'factory_girl_rails'
+gem 'therubyracer'
+gem 'execjs'
