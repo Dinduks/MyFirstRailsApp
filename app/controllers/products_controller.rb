@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   respond_to    :html
 
   def index
-    @page_small_title = I18n.t :liste_articles
+    @page_small_title = I18n.t :product_list
     @products = Product.all
     respond_with @products
   end
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @page_small_title = I18n.t :ajouter_article
+    @page_small_title = I18n.t :add_product
     @product = Product.new
     respond_with @product
   end
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new params[:product]
     @product.save
-    redirect_to :action => "index"
+    redirect_to :action => :index
   end
 
   def edit
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   def commander
     session[:cart] = CartUtility.add_product(session[:cart], @product.id, 1)
     flash[:success] = I18n.t :has_been_added_to_cart!, :name => @product.title
-    redirect_to :action => "index"
+    redirect_to :action => :index
   end
 
   def show
@@ -55,9 +55,7 @@ class ProductsController < ApplicationController
     @product = Product.find params[:product_id]
     recommandation = Recommendation.create params[:recommendation].merge(:user_id => current_user.id)
 
-    if recommandation
-      Mailer::recommendation_email(@product, recommandation).deliver
-    end
+      Mailer::recommendation_email(@product, recommandation).deliver if recommandation
 
     render :nothing => true
   end
@@ -71,6 +69,6 @@ class ProductsController < ApplicationController
   end
 
   def set_title
-    @page_title = I18n.t :Articles
+    @page_title = I18n.t :Products
   end
 end

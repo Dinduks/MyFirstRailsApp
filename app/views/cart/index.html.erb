@@ -2,7 +2,7 @@
   <tr>
     <td><%=t :Quantity %></td>
     <td><%=t :image %></td>
-    <td><%=t :titre %></td>
+    <td><%=t :title %></td>
     <td><%=t :Price %></td>
   </tr>
   <% @products.each do |product| %>
@@ -11,7 +11,7 @@
         <%= session[:cart][product.id] %>
       </td>
       <td>
-        <img src="/uploads/articlesimages/<%= product.image %>" 
+        <img src="/uploads/articlesimages/<%= product.image %>"
              alt="<%= product.title %>" />
       </td>
       <td>
@@ -21,7 +21,7 @@
         <%= get_formatted_price product.price %> €
       <td>
         <%= link_to cart_path(product.id), :method => :delete do %>
-          <%= I18n.t :supprimer %>
+          <%= I18n.t :remove %>
         <% end %>
       </td>
     </tr>

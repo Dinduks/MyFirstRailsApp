@@ -1,11 +1,11 @@
 <%= form_for User.new, :url => user_session_path, :class => 'pull-right' do |f| %>
-  <%= f.text_field :email, 
+  <%= f.text_field :email,
                    :placeholder => "Username",
-                   :class       => "input-small" 
+                   :class       => "input-small"
   %>
   <%= f.password_field :password,
                    :placeholder => "Password",
                    :class       => "input-small"
   %>
-  <%= button_tag "Sign in", :type => "submit", :class => "btn" %>
+  <%= button_tag t(:sign_in), :type => "submit", :class => "btn" %>
 <% end %>

@@ -2,13 +2,13 @@
 
   <% if @products.empty? %>
     <tr>
-      <td>Il n'y a aucun produit enregistré</td>
+      <td><%= t(:there_no_product) %></td>
     </tr>
   <% else %>
 
     <tr>
       <td><%=t :image %> </td>
-      <td><%=t :titre %> </td>
+      <td><%=t :title %> </td>
       <td><%=t :Price %> </td>
     </tr>
     <% @products.each do |product| %>
@@ -28,18 +28,18 @@
         <% if user_signed_in? %>
           <td>
             <%= link_to product_commander_path product.id do %>
-              <%= I18n.t :commander %>
+              <%= I18n.t :order %>
             <% end %>
           </td>
           <% if current_user.admin %>
             <td>
               <%= link_to edit_product_path product.id do %>
-                <%= I18n.t :editer %>
+                <%= I18n.t :edit %>
               <% end %>
             </td>
             <td>
               <%= link_to product_path(product.id), :method => :delete do %>
-                <%= I18n.t :supprimer %>
+                <%= I18n.t :remove %>
               <% end %>
             </td>
           <% end %>

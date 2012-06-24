@@ -1,29 +1,25 @@
-<% recommand = I18n.t :Recommander %>
-
-<div id="recommand-modal" class="modal fade">
-
+<div id="recommend-modal" class="modal fade">
 
   <%= form_for @recommendation, :url => product_recommander_path(@product.id), :remote => true do |f| %>
 
     <div class="modal-body">
-      <p><%= I18n.t :saisir_adresse_ami %></p>
       <div>
         <%= hidden_field_tag :product_id, @product.id %>
       </div>
       <p>
-        <%= f.label :name, "Your name" %>
+        <%= f.label :name, t(:your_name) %>
         <%= f.text_field :name, :required => :required %>
       </p>
       <p>
-        <%= f.label :email, "Your friend's email address" %>
+        <%= f.label :email, t(:your_friends_email) %>
         <%= f.email_field :email, :required => :required %>
       </p>
     </div>
     <div class="modal-footer">
-      <%= f.submit recommand, :class => "btn danger", :id => "submit" %>
-      <a href="#" class="btn" 
-         onClick="$('#recommand-modal').modal('hide');return false;">
-           <%= I18n.t :Annuler %>
+      <%= f.submit t :Recommend, :class => "btn danger", :id => "submit" %>
+      <a href="#" class="btn"
+         onClick="$('#recommend-modal').modal('hide');return false;">
+           <%= I18n.t :Cancel %>
       </a>
     </div>
 
@@ -33,13 +29,13 @@
 <div class="recommendation-alert" style="display:none;">
   <%=
   render :partial => 'layouts/partials/alert',
-         :locals  => {:flash => {:success => I18n.t(:recommendation_envoyee)}}
+         :locals  => {:flash => {:success => I18n.t(:recommendation_sent)}}
   %>
 </div>
 
 <script type="text/javascript">
   $('#new_recommendation').submit(function() {
-    $('#recommand-modal').modal('hide');
+    $('#recommend-modal').modal('hide');
     $('.span14').prepend($('.recommendation-alert'));
     $('.recommendation-alert').show();
   });
